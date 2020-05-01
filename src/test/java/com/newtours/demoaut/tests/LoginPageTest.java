@@ -11,21 +11,29 @@ import org.testng.annotations.Test;
 import com.newtours.demoaut.base.TestBase;
 import com.newtours.demoaut.pages.HomePage;
 import com.newtours.demoaut.pages.LoginPage;
+import com.newtours.demoaut.pages.RegistrationPage;
+import com.newtours.demoaut.utility.Utility;
+
 
 public class LoginPageTest extends TestBase {
 
+	Utility util;
 	LoginPage loginpage;
-	HomePage homepage;
+	RegistrationPage registration;
+	String Sheet="Registration";
+	
 	@BeforeTest
-	public void setup() {
+	public void setup() throws InterruptedException {
 		initialization();
-		loginpage = new LoginPage();
+		util= new Utility();
+		registration = new RegistrationPage();
+		loginpage=registration.Registeruser(util.getDataFromXL(Sheet, 1, 0),(util.getDataFromXL(Sheet, 1, 1)),(util.getDataFromXL(Sheet, 1, 3)),(util.getDataFromXL(Sheet, 1, 10)),(util.getDataFromXL(Sheet, 1, 8)));	
 	}
 
 	@Test(priority = 1)
 	public void verifyLoginpagetitle() {
 		final String LoginPageTitle = loginpage.VerifyLoginPageTitle();
-		assertEquals(LoginPageTitle, "Register: Mercury Tours");
+		assertEquals(LoginPageTitle, "Sign-on: Mercury Tours");
 	}
 
 	
@@ -35,9 +43,9 @@ public class LoginPageTest extends TestBase {
 		loginpage.VerifyloginPagelabel();
 	}
 
-	@Test(priority = 2)
+	@Test(priority = 3)
 	public void VerifyLoginFunctionality() {
-		loginpage.VerifyLoginFunctionality(prop.getProperty("username"), prop.getProperty("pass"));
+		loginpage.VerifyLoginFunctionality((util.getDataFromXL(Sheet, 1, 3)),(util.getDataFromXL(Sheet, 1, 10)));
 	}
 
 	@AfterTest

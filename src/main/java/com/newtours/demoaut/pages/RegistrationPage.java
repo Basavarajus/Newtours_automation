@@ -57,6 +57,10 @@ public class RegistrationPage extends TestBase{
 	WebElement Confirm_password_field;
 	
 	
+	
+	@FindBy(xpath="//select[@name='airline']")
+	WebElement country_type;
+	
 	@FindBy(xpath="//input[@name='register']")
 	WebElement register_form_submit_button;
 	
@@ -71,19 +75,17 @@ public class RegistrationPage extends TestBase{
 	
 	public LoginPage Registeruser(String FirstName,String Lastname,String Email,String Password,String Country) throws InterruptedException {
 		register_link.click();
-		Select select = new Select(driver.findElement(By.xpath("//select[@name='country']")));
+		Select country = new Select(country_type);
 		firstname_field.sendKeys(FirstName);
 		lastname_field.sendKeys(Lastname);
 		useremail_field.sendKeys(Email);
-		select.selectByVisibleText(Country);
+		country.selectByVisibleText(Country);
 		username_field.sendKeys(Email);
 		password_field.sendKeys(Password);
 		Confirm_password_field.sendKeys(Password);
 		register_form_submit_button.click();
 		sign_in_link.click();
-		return new LoginPage();
-		
-		
+		return new LoginPage();		
 	}
 	
 }

@@ -41,11 +41,11 @@ public class TestBase {
 	            System.setProperty("webdriver.gecko.driver", String.valueOf(System.getProperty("user.dir")) + "/resource/geckodriver.exe");
 	            TestBase.driver = (WebDriver)new FirefoxDriver();
 	        }
-	        driver.manage().window().maximize();
-	       driver.manage().deleteAllCookies();
+	      driver.manage().window().maximize();
+	      driver.manage().deleteAllCookies();
 	      driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-	        driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
-	        driver.get(TestBase.prop.getProperty("url"));
+	      driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+	      driver.get(TestBase.prop.getProperty("url"));
 	    }
 	
 	

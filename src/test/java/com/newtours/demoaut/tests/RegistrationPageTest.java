@@ -1,6 +1,7 @@
 package com.newtours.demoaut.tests;
 
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
@@ -8,6 +9,7 @@ import org.testng.annotations.Test;
 
 import com.newtours.demoaut.base.TestBase;
 import com.newtours.demoaut.pages.HomePage;
+import com.newtours.demoaut.pages.LoginPage;
 import com.newtours.demoaut.pages.RegistrationPage;
 import com.newtours.demoaut.utility.Utility;
 
@@ -15,13 +17,13 @@ public class RegistrationPageTest extends TestBase {
 
 	RegistrationPage register; 
 	Utility util;
+	LoginPage loginpage;
 	
 	String Sheet="Registration";
-	
-	@BeforeMethod
+	@BeforeTest
 	public void setup() {
 		initialization();
-		register= new RegistrationPage();
+		loginpage= new LoginPage();
 		util=new Utility();
 	}
 	
@@ -41,7 +43,7 @@ public class RegistrationPageTest extends TestBase {
 		register.verifyRegistrationPage_text();
 	}
 	
-	@AfterMethod
+	@AfterTest
 	public void Teardown() {
 		driver.quit();
 	}
