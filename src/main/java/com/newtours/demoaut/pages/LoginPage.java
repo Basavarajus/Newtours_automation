@@ -1,5 +1,10 @@
 package com.newtours.demoaut.pages;
 
+import java.util.concurrent.TimeUnit;
+
+import javax.xml.xpath.XPath;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,8 +29,8 @@ public class LoginPage extends TestBase {
 	@FindBy(xpath="//img[@src='/images/masts/mast_signon.gif']")
 	WebElement Login_label_image;
 	
-	public void Loginpage() {
-		PageFactory.initElements(driver,this);
+	public  LoginPage() {
+		  PageFactory.initElements(driver, this);
 	}
 	
 	public String VerifyLoginPageTitle() {
@@ -35,13 +40,19 @@ public class LoginPage extends TestBase {
 	public void VerifyloginPagelabel() {
 		Login_label_image.isDisplayed();
 	}
+	
+	public void selectSamples()
+	{
+//		driver.get("http://newtours.demoaut.com/mercuryregister.php");
+		WebElement element=driver.findElement(By.name("country"));
+		org.openqa.selenium.support.ui.Select se=new org.openqa.selenium.support.ui.Select(element);
+		se.selectByValue("AMERICAN SAMOA");
+	}
 	public HomePage VerifyLoginFunctionality(String username,String Password) {
 		username_field.sendKeys(username);
 		Password_field.sendKeys(Password);
-//		JavascriptExecutor js = (JavascriptExecutor)driver;
-//		js.executeScript("arguments[0].click();", sign_in_button);
-		sign_in_button.click();
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();", sign_in_button);
 		return new HomePage();
-		
 	}
 }

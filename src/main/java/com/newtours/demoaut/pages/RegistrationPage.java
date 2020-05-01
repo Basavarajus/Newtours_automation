@@ -1,12 +1,22 @@
 package com.newtours.demoaut.pages;
 
+import javax.xml.xpath.XPath;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 import com.newtours.demoaut.base.TestBase;
 public class RegistrationPage extends TestBase{
 
+	@FindBy(xpath="//a[contains(text(),'REGISTER')] ")
+	WebElement register_link;
+	
+	@FindBy(xpath="//a[contains(text(),'sign-in')]")
+	WebElement sign_in_link;
+	
 	@FindBy(xpath="//img[@src='/images/masts/mast_register.gif']")
 	WebElement Register_page_text_label;
 	
@@ -46,15 +56,34 @@ public class RegistrationPage extends TestBase{
 	@FindBy(xpath="//input[@name='confirmPassword']")
 	WebElement Confirm_password_field;
 	
+	
 	@FindBy(xpath="//input[@name='register']")
 	WebElement register_form_submit_button;
 	
 	public RegistrationPage() {
 		PageFactory.initElements(driver, this);
 	}  
-	
+		
 	public void verifyRegistrationPage_text() {
+		register_link.click();
 		Register_page_text_label.isDisplayed();	
+	}
+	
+	public LoginPage Registeruser(String FirstName,String Lastname,String Email,String Password,String Country) throws InterruptedException {
+		register_link.click();
+		Select select = new Select(driver.findElement(By.xpath("//select[@name='country']")));
+		firstname_field.sendKeys(FirstName);
+		lastname_field.sendKeys(Lastname);
+		useremail_field.sendKeys(Email);
+		select.selectByVisibleText(Country);
+		username_field.sendKeys(Email);
+		password_field.sendKeys(Password);
+		Confirm_password_field.sendKeys(Password);
+		register_form_submit_button.click();
+		sign_in_link.click();
+		return new LoginPage();
+		
+		
 	}
 	
 }

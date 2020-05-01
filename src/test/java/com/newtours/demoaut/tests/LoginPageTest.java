@@ -3,7 +3,9 @@ package com.newtours.demoaut.tests;
 import static org.testng.Assert.assertEquals;
 
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.newtours.demoaut.base.TestBase;
@@ -14,32 +16,31 @@ public class LoginPageTest extends TestBase {
 
 	LoginPage loginpage;
 	HomePage homepage;
-	
-	@BeforeMethod
+	@BeforeTest
 	public void setup() {
 		initialization();
-		
+		loginpage = new LoginPage();
 	}
+
+	@Test(priority = 1)
+	public void verifyLoginpagetitle() {
+		final String LoginPageTitle = loginpage.VerifyLoginPageTitle();
+		assertEquals(LoginPageTitle, "Register: Mercury Tours");
+	}
+
 	
-//	@Test(priority=1)
-//	public void  verifyLoginpagetitle() {
-//		final String LoginPageTitle=loginpage.VerifyLoginPageTitle();
-//		assertEquals(LoginPageTitle,"Sign-on: Mercury Tours");
-//	}
-//	@Test(priority=2)
-//	public void verifyloginpageLabel() {
-//		loginpage.VerifyloginPagelabel();
-//	}
-	@Test(priority=1)
+	
+	@Test(priority = 2)
+	public void verifyloginpageLabel() {
+		loginpage.VerifyloginPagelabel();
+	}
+
+	@Test(priority = 2)
 	public void VerifyLoginFunctionality() {
-		System.out.println(prop.getProperty("username"));
-				System.out.println(prop.getProperty("pass"));	
-				loginpage=new LoginPage();
-//				loginpage.VerifyLoginFunctionality();	
-		loginpage.VerifyLoginFunctionality("automation@yopmail.com","Simpli@123");
+		loginpage.VerifyLoginFunctionality(prop.getProperty("username"), prop.getProperty("pass"));
 	}
-	
-	@AfterMethod
+
+	@AfterTest
 	public void teardown() {
 		driver.quit();
 	}

@@ -15,7 +15,7 @@ public class TestBase {
 	    public static Properties prop;
 	    
 	    //global text data excel files
-	    public static final String TestDataExcelFileName="C:\\Users\\basavaraju.s\\Desktop\\New SauceDemo\\newtours.demoaut_automation\\resource\\TestData.xlsx";
+//	    public static final String TestDataExcelFileName="C:\\Users\\basavaraju.s\\Desktop\\New SauceDemo\\newtours.demoaut_automation\\resource\\TestData.xlsx";
 	    
 	    public TestBase() {
 	        try {
@@ -41,11 +41,11 @@ public class TestBase {
 	            System.setProperty("webdriver.gecko.driver", String.valueOf(System.getProperty("user.dir")) + "/resource/geckodriver.exe");
 	            TestBase.driver = (WebDriver)new FirefoxDriver();
 	        }
-	        TestBase.driver.manage().window().maximize();
-	        TestBase.driver.manage().deleteAllCookies();
-	        TestBase.driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-	        TestBase.driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
-	        TestBase.driver.get(TestBase.prop.getProperty("url"));
+	        driver.manage().window().maximize();
+	       driver.manage().deleteAllCookies();
+	      driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+	        driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+	        driver.get(TestBase.prop.getProperty("url"));
 	    }
 	
 	
