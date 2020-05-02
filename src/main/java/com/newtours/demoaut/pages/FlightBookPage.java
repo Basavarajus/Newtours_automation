@@ -1,5 +1,8 @@
 package com.newtours.demoaut.pages;
 
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
 import javax.xml.xpath.XPath;
 
 import org.openqa.selenium.WebElement;
@@ -8,6 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 import com.newtours.demoaut.base.TestBase;
+import com.newtours.demoaut.utility.Utility;
 
 public class FlightBookPage extends TestBase {
 	@FindBy(xpath="//input[@value='oneway']")
@@ -75,11 +79,12 @@ public class FlightBookPage extends TestBase {
 	WebElement secure_purchase;
 	
 	
+	Utility util= new Utility();
 	public FlightBookPage() {
 		PageFactory.initElements(driver, this);
 	}
 	
-	public void verifyFlightbookProcess(String source,String Destination ,String airline,String Fname,String Lname,String Meal,String Number) {
+	public void verifyFlightbookProcess(String source,String Destination ,String airline,String Fname,String Lname,String Meal,String Number) throws IOException {
 //		flightFindertextlabel.isDisplayed();
 		System.out.println(source+"------ "+Destination+"-----"+airline);
 		Select FromPlace= new Select(From_place);
@@ -95,8 +100,9 @@ public class FlightBookPage extends TestBase {
 		Select Meal_types= new Select(Meal_type);
 		Meal_types.selectByVisibleText(Meal);
 		card_number.sendKeys(Number);
-		
 		secure_purchase.click();
+		driver.manage().timeouts().implicitlyWait(30 ,TimeUnit.SECONDS); 
+		util.takeScreenshotAtEndOfTest();
 		
 		
 	}

@@ -3,13 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="com.newtours.demoaut.tests.FlightBookPageTest">
+      <class name="com.newtours.demoaut.tests.RegistrationPageTest">
         <methods>
-          <include name="verifyflightBooking"/>
-          <include name="teardown"/>
+          <include name="Teardown"/>
           <include name="setup"/>
+          <include name="registeruser"/>
         </methods>
-      </class> <!-- com.newtours.demoaut.tests.FlightBookPageTest -->
+      </class> <!-- com.newtours.demoaut.tests.RegistrationPageTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

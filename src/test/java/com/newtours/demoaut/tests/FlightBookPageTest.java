@@ -1,5 +1,9 @@
 package com.newtours.demoaut.tests;
 
+import org.testng.annotations.Test;
+
+import java.io.IOException;
+
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
@@ -26,7 +30,7 @@ public class FlightBookPageTest extends TestBase {
 	public FlightBookPageTest() {
 		super();
 	}
-	@BeforeMethod
+	@BeforeTest
 	public void setup() throws InterruptedException {
 		initialization();
 		registration= new RegistrationPage();
@@ -39,14 +43,14 @@ public class FlightBookPageTest extends TestBase {
 	
 	@SuppressWarnings("static-access")
 	@Test(priority=1)
-	public void verifyflightBooking() {
+	public void verifyflightBooking() throws IOException {
 		flightbook.verifyFlightbookProcess((util.getDataFromXL(Sheet, 5, 0)),(util.getDataFromXL(Sheet, 5, 1)),(util.getDataFromXL(Sheet, 5, 3)),(util.getDataFromXL(Sheet, 1, 0)),(util.getDataFromXL(Sheet, 1, 1)),(util.getDataFromXL(Sheet, 5, 4)),(util.getDataFromXL(Sheet, 5, 5)));
 		System.out.println((util.getDataFromXL(Sheet, 5, 0))+"-----"+(util.getDataFromXL(Sheet, 5, 2))+"----"+(util.getDataFromXL(Sheet, 5, 3)));
 	}
 	
 	
 	
-	@AfterMethod
+	@AfterTest
 	public void teardown() {
 		driver.quit();
 	}

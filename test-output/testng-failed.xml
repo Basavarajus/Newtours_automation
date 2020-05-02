@@ -1,15 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
-  <test name="Default test(failed)">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
+  <test name="Test(failed)">
     <classes>
+      <class name="com.newtours.demoaut.tests.LoginPageTest">
+        <methods>
+          <include name="verifyLoginpagetitle"/>
+          <include name="initialization"/>
+          <include name="VerifyLoginFunctionality"/>
+          <include name="verifyloginpageLabel"/>
+        </methods>
+      </class> <!-- com.newtours.demoaut.tests.LoginPageTest -->
+      <class name="com.newtours.demoaut.tests.HomePageTest">
+        <methods>
+          <include name="verifHomePageTitle"/>
+          <include name="verifyFlightBookingprocess"/>
+          <include name="initialization"/>
+          <include name="verifyhomepageElements"/>
+        </methods>
+      </class> <!-- com.newtours.demoaut.tests.HomePageTest -->
+      <class name="com.newtours.demoaut.tests.RegistrationPageTest">
+        <methods>
+          <include name="teardown"/>
+          <include name="initialization"/>
+          <include name="VerifyRegisterpageText"/>
+          <include name="registeruser"/>
+        </methods>
+      </class> <!-- com.newtours.demoaut.tests.RegistrationPageTest -->
       <class name="com.newtours.demoaut.tests.FlightBookPageTest">
         <methods>
+          <include name="initialization"/>
           <include name="verifyflightBooking"/>
-          <include name="teardown"/>
-          <include name="setup"/>
         </methods>
       </class> <!-- com.newtours.demoaut.tests.FlightBookPageTest -->
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

@@ -9,6 +9,9 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 
 public class TestBase {
 	 public static WebDriver driver;
@@ -17,6 +20,8 @@ public class TestBase {
 	    //global text data excel files
 //	    public static final String TestDataExcelFileName="C:\\Users\\basavaraju.s\\Desktop\\New SauceDemo\\newtours.demoaut_automation\\resource\\TestData.xlsx";
 	    
+	    
+	      
 	    public TestBase() {
 	        try {
 	            TestBase.prop = new Properties();
@@ -30,7 +35,6 @@ public class TestBase {
 	            e2.printStackTrace();
 	        }
 	    }
-	    
 	    public static void initialization() {
 	        final String BrowserName = TestBase.prop.getProperty("Browser");
 	        if (BrowserName.equals("chrome")) {
@@ -48,6 +52,9 @@ public class TestBase {
 	      driver.get(TestBase.prop.getProperty("url"));
 	    }
 	
+	    public void  teardown() {
+	    	driver.quit();
+	    }
 	
 
 }

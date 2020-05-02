@@ -1,5 +1,6 @@
 package com.newtours.demoaut.tests;
 
+import org.testng.annotations.Test;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
@@ -23,6 +24,7 @@ public class RegistrationPageTest extends TestBase {
 	@BeforeTest
 	public void setup() {
 		initialization();
+		register= new RegistrationPage();
 		loginpage= new LoginPage();
 		util=new Utility();
 	}
@@ -34,12 +36,13 @@ public class RegistrationPageTest extends TestBase {
 		
 //	}
 	
+	@SuppressWarnings("static-access")
 	@Test(priority=2)
 	public void registeruser() throws InterruptedException {
 		register.Registeruser(util.getDataFromXL(Sheet, 1, 0),(util.getDataFromXL(Sheet, 1, 1)),(util.getDataFromXL(Sheet, 1, 3)),(util.getDataFromXL(Sheet, 1, 10)),(util.getDataFromXL(Sheet, 1, 8)));	
 	}
 	@Test(priority=1)
-	public void VerifyRegisterpageText() {
+	public void VerifyRegisterpageText() throws InterruptedException {
 		register.verifyRegistrationPage_text();
 	}
 	

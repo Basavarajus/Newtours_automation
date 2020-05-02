@@ -58,7 +58,7 @@ public class RegistrationPage extends TestBase{
 	
 	
 	
-	@FindBy(xpath="//select[@name='airline']")
+	@FindBy(xpath="//select[@name='country']")
 	WebElement country_type;
 	
 	@FindBy(xpath="//input[@name='register']")
@@ -68,12 +68,14 @@ public class RegistrationPage extends TestBase{
 		PageFactory.initElements(driver, this);
 	}  
 		
-	public void verifyRegistrationPage_text() {
+	public void verifyRegistrationPage_text() throws InterruptedException {
 		register_link.click();
 		Register_page_text_label.isDisplayed();	
 	}
 	
 	public LoginPage Registeruser(String FirstName,String Lastname,String Email,String Password,String Country) throws InterruptedException {
+		
+		System.out.println(FirstName+"----"+Lastname+"---"+Email+"----"+Password+"-----"+Country);
 		register_link.click();
 		Select country = new Select(country_type);
 		firstname_field.sendKeys(FirstName);

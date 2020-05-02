@@ -1,5 +1,7 @@
 package com.newtours.demoaut.tests;
 
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import static org.testng.Assert.assertEquals;
 
 import org.testng.annotations.AfterMethod;
@@ -33,7 +35,7 @@ public class LoginPageTest extends TestBase {
 	@Test(priority = 1)
 	public void verifyLoginpagetitle() {
 		final String LoginPageTitle = loginpage.VerifyLoginPageTitle();
-		assertEquals(LoginPageTitle, "Sign-on: Mercury Tours");
+		AssertJUnit.assertEquals(LoginPageTitle, "Sign-on: Mercury Tours");
 	}
 
 	

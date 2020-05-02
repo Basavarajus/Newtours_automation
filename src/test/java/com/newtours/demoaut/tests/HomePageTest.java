@@ -1,4 +1,6 @@
 package com.newtours.demoaut.tests;
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import static org.testng.Assert.assertEquals;
 
 import org.testng.annotations.AfterTest;
@@ -29,7 +31,7 @@ public class HomePageTest extends TestBase {
 	@Test(priority=1)
 	public void verifHomePageTitle() {
 		String HomePageTitle= home.verifyHomePageTitle();
-		assertEquals(HomePageTitle, "Find a Flight: Mercury Tours:");
+		AssertJUnit.assertEquals(HomePageTitle, "Welcome: Mercury Tours");
 	}
 	
 	@Test(priority=2)
