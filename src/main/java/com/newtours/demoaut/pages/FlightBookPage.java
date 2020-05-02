@@ -59,14 +59,29 @@ public class FlightBookPage extends TestBase {
 	@FindBy(xpath="//input[@name='reserveFlights']")
 	WebElement confirm_booking;
 	
+	@FindBy(xpath="//select[@name='pass.0.meal']")
+	WebElement Meal_type;
+	
+	@FindBy(xpath="//input[@name='passFirst0']")
+	WebElement first_name;
+	
+	@FindBy(xpath="//input[@name='passLast0']")
+	WebElement lastname;
+	
+	@FindBy(xpath="//input[@name='creditnumber']")
+	WebElement card_number;
+	
+	@FindBy(xpath="//input[@src='/images/forms/purchase.gif']")
+	WebElement secure_purchase;
 	
 	
 	public FlightBookPage() {
 		PageFactory.initElements(driver, this);
 	}
 	
-	public void verifyFlightbookProcess(String source,String Destination ,String airline) {
-		flightFindertextlabel.isDisplayed();
+	public void verifyFlightbookProcess(String source,String Destination ,String airline,String Fname,String Lname,String Meal,String Number) {
+//		flightFindertextlabel.isDisplayed();
+		System.out.println(source+"------ "+Destination+"-----"+airline);
 		Select FromPlace= new Select(From_place);
 		FromPlace.selectByVisibleText(source);
 		Select Toplace= new Select(To_place);
@@ -75,6 +90,14 @@ public class FlightBookPage extends TestBase {
 		airlines.selectByVisibleText(airline);
 		continue_link.click();
 		confirm_booking.click();
+		first_name.sendKeys(Fname);
+		lastname.sendKeys(Lname);
+		Select Meal_types= new Select(Meal_type);
+		Meal_types.selectByVisibleText(Meal);
+		card_number.sendKeys(Number);
+		
+		secure_purchase.click();
+		
 		
 	}
 	
